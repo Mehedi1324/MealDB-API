@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+</head>
+
+<body>
+    <h1 class="text-center mt-3 text-success">This is a food hunting section</h1>
+
+    <div class="container" id="addInfo ">
+
+        <!-- This is search box and a single button  -->
+        <div>
+            <div class="input-group mb-3 w-50 m-auto mt-3">
+                <input id="searchBox" type="text" class="form-control" placeholder="search your favourite dish"
+                    aria-label="Recipient's username" aria-describedby="button-addon2">
+                <button class="btn btn-outline-secondary" type="button" id="button-search"
+                    onclick="clickAction()">Search</button>
+            </div>
+        </div>
+
+
+        <!-- This is the card adding section  -->
+
+        <div id="cards" class="row row-cols-1 row-cols-md-3 g-4">
+
+        </div>
+
+
+    </div>
+
+
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+        crossorigin="anonymous"></script>
+    <script src="mealdb.js"></script>
+</body>
+
+</html>
