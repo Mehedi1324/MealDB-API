@@ -1,17 +1,27 @@
 const clickAction = () => {
     const search_box = document.getElementById("searchBox");
     const searchVal = search_box.value;
-    search_box.value = " ";
-    const url = ` https://www.themealdb.com/api/json/v1/1/search.php?s=${searchVal}`;
-    fetch(url)
-        .then(res => res.json())
-        .then(data => find_the_damn_meal(data.meals))
-}
-const find_the_damn_meal = meal => {
-    meal.forEach(food => {
-        console.log(food)
+    search_box.value = ""
+    if (searchVal == "") {
 
-        const textHandOver = document.getElementById("cards")
+        window.alert("please search for something")
+    }
+    else {
+        const url = ` https://www.themealdb.com/api/json/v1/1/search.php?s=${searchVal}`;
+        fetch(url)
+            .then(res => res.json())
+            .then(data => find_the_damn_meal(data.meals))
+    }
+
+
+
+}
+
+const find_the_damn_meal = meal => {
+    const textHandOver = document.getElementById("cards")
+    textHandOver.textContent = "";
+
+    meal.forEach(food => {
         const div = document.createElement("div");
 
 
@@ -39,7 +49,7 @@ const loadMealDetail = mealget => {
 }
 const finalTouch = addNow => {
     const addDiv = document.getElementById("foodInformation");
-
+    addDiv.textContent = ""
     const div = document.createElement("div");
     div.innerHTML = `
   <div class="row g-3 ">
