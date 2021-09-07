@@ -1,23 +1,24 @@
 const clickAction = () => {
-  const search_box = document.getElementById("searchBox");
-  const searchVal = search_box.value;
-  search_box.value = " ";
-  const url = ` https://www.themealdb.com/api/json/v1/1/search.php?s=${searchVal}`;
-  fetch(url)
-    .then(res => res.json())
-    .then(data => find_the_damn_meal(data.meals))
+    const search_box = document.getElementById("searchBox");
+    const searchVal = search_box.value;
+    search_box.value = " ";
+    const url = ` https://www.themealdb.com/api/json/v1/1/search.php?s=${searchVal}`;
+    fetch(url)
+        .then(res => res.json())
+        .then(data => find_the_damn_meal(data.meals))
 }
 const find_the_damn_meal = meal => {
-  meal.forEach(food => {
+    meal.forEach(food => {
+        console.log(food)
 
-    const textHandOver = document.getElementById("cards")
-    const div = document.createElement("div");
+        const textHandOver = document.getElementById("cards")
+        const div = document.createElement("div");
 
 
-    div.innerHTML = `
+        div.innerHTML = `
 
     <div class="col">
-                <div class="card h-100">
+                <div onclick="loadMealDetail(${food.idMeal})" class="card h-100">
                     <img src="${food.strMealThumb}" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">${food.strMeal}</h5>
@@ -27,8 +28,40 @@ const find_the_damn_meal = meal => {
             </div>
    
     `
-    textHandOver.appendChild(div);
-  })
+        textHandOver.appendChild(div);
+    })
 }
+const loadMealDetail = mealget => {
+    const url = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealget}`;
+    fetch(url)
+        .then(res => res.json())
+        .then(data => finalTouch(data.meals[0]))
+}
+const finalTouch = addNow => {
+    const addDiv = document.getElementById("foodInformation");
+
+    const div = document.createElement("div");
+    div.innerHTML = `
+  <div class="row g-3 ">
+                <div class="col-md-4">
+                    <img class= "w-100" src="${addNow.strMealThumb}" class="img-fluid rounded-start" alt="...">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">${addNow.strMeal}</h5>
+                        <p class="card-text">${addNow.strInstructions.slice(0, 200)}</p>
+                        
+                    </div>
+                </div>
+            </div>
+  `;
+
+    addDiv.appendChild(div);
+}
+
+
+
+
+
 
 
