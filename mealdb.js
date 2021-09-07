@@ -43,14 +43,14 @@ const finalTouch = addNow => {
     const div = document.createElement("div");
     div.innerHTML = `
   <div class="row g-3 ">
-                <div class="col-md-4">
+                <div class="col-md-4 ">
                     <img class= "w-100" src="${addNow.strMealThumb}" class="img-fluid rounded-start" alt="...">
                 </div>
                 <div class="col-md-8">
                     <div class="card-body">
-                        <h5 class="card-title">${addNow.strMeal}</h5>
-                        <p class="card-text">${addNow.strInstructions.slice(0, 200)}</p>
-                        
+                        <h5 class="card-title px-3 py-5">${addNow.strMeal}</h5>
+                        <p class="card-text px-3 mr-5">${addNow.strInstructions.slice(0, 200)}</p>
+                     <a href=" ${addNow.strYoutube}" class="btn btn-primary px-3 mx-3 mt-5 " target="_blank">Play video</a>
                     </div>
                 </div>
             </div>
